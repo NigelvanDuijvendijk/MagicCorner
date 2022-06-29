@@ -1,0 +1,42 @@
+.dashboard {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dashboard__btn {
+    padding: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    border: none;
+    color: white;
+    background-color: black;
+  }
+  .dashboard div {
+    margin-top: 7px;
+  }
+
+  .filters{
+    height: 10vh;
+  }
+
+  .filters h5, .collection h5{
+    text-align: left;
+    padding-top: 10px;
+  }
+
+  .collection{
+    border-top: 1px solid #4c4c59;
+    height: 90vh;
+  }
+
+  .card{
+    border: none !important;
+  }
+
+  .card:hover img{
+    transform: scale(2, 2) !important;
+    z-index: 10;
+    transition: 0.5s;
+  }

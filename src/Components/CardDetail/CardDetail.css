@@ -1,0 +1,53 @@
+.cardDetail{
+    color: #4c4c59;
+    height: 300px;
+}
+
+.cardDetail img{
+    width: 150px;
+    float: left;
+}
+
+.cardDetail h5{
+    font-size: 14px;
+    text-align: left;
+}
+
+.cardDetail{
+    background-color: #f8f7f7;
+    padding: 30px; 
+    margin-top: 20px;
+    text-align: left;
+}
+
+.cardDetail button{
+    margin-left: 20px !important;
+    float: left;
+    z-index: 10;
+}  
+
+.content-top{
+    line-height: 5px;
+}
+
+.cardDetail img:hover{
+    transform: scale(1.80, 1.80) !important;
+    z-index: 100;
+    transition: 0.5s;
+}
+
+.circle{
+    background-color: #0d6efd;
+    border-radius: 50%;
+    width: 30px !important;
+    height: 30px;
+    padding-top: 7px;
+    text-align: center;
+    color: white;
+    display: block;
+    float: right;
+}
+
+.content{
+    padding-left: 20px;
+}
