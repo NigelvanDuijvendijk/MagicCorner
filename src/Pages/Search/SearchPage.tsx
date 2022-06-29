@@ -12,14 +12,22 @@ function SearchPage() {
     useEffect(() => {
         if(search != null) {
             getCard(search);
-            console.log("i fire once");
         }
     }, [search]);
     
     const getCard = (search: string) => {
         cardService.searchCard(search).then((foundCards) => {
             foundCards.data.forEach((card: any) => {
-                const newCard: CardModel = CardModel.fromJSON(card);
+                var newCard: CardModel = CardModel.fromJSON(card);
+                cardService.searchPrints(card.name).then((foundPrints) => {
+                    foundPrints.data.forEach((print: CardModel) => {
+                        const newPrint: CardModel = CardModel.fromJSON(print);
+                        if(newPrint.prints != undefined) { 
+                            console.log("done");
+                            newCard.prints.push(newPrint);
+                        }
+                    });
+                });
                 setFoundCard(foundCard => [...foundCard, newCard]); 
             });
         }).catch((error) => { 

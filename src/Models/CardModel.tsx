@@ -34,6 +34,7 @@ class CardModel{
     set_name: string = "";
     set_type: string = "";
     type_line: string = "";
+    prints: CardModel[] = [];
 
     constructor(cardModel?: CardModel) {
         Object.assign(this, cardModel);
@@ -66,11 +67,12 @@ interface  CardJSON{
     prices: {},
     promo: boolean,
     purchase_uris: {},
-    realeased_at: string,
+    realeased_at: string, 
     reprint: boolean,
     rulings_uri: string,
     set: string,
     set_name: string,
     set_type: string,
     type_line: string,
+    prints : CardModel[]
 }

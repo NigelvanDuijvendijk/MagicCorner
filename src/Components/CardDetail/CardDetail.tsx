@@ -36,7 +36,17 @@ function CardDetail({card}: Props) {
                 <div className="content-right col-md-6">
                     <div className="row">
                         <div className="col-md-6">
-
+                            { card.prints != undefined &&
+                                <div>
+                                    <p>Prints</p>
+                                    <ul>
+                                        {card.prints.map(print => {
+                                            return <li>{print.name}</li>
+                                        })
+                                        }
+                                    </ul>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
