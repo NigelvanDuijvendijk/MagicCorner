@@ -1,0 +1,9 @@
+
+.symbol{
+    position: relative;
+    margin-top: 0 !important;
+}
+
+.symbol img{
+    vertical-align: baseline !important;
+}

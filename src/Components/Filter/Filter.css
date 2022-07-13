@@ -1,0 +1,64 @@
+.colorFilter{
+    list-style: none;
+    float: left;
+}
+
+.colorFilter li {
+    float: left;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.colorFilter li:hover {
+    transform: scale(1.3);
+    transition: all 0.3s;
+}
+
+.Filter{
+    height: 100%;
+}
+
+.selected .symbol img{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;   
+    border-radius: 50%;
+    padding: 0;
+}
+
+.rarityFilter .selected{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;   
+}
+
+.rarityFilter{
+    float: left;
+    list-style: none;
+}
+
+.rarityFilter li {
+    float: left;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.rarityFilter .common, .unCommen, .rare, .mythic{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.common{
+    background-color: rgb(184, 182, 182);
+}
+
+.unCommen{
+    background-color: rgb(88, 166, 240);
+}
+
+.rare{
+    background-color: rgb(236, 223, 35);
+}
+
+.mythic{
+    background-color: rgb(241, 154, 22);
+}

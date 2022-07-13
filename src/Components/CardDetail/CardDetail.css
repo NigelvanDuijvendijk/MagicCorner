@@ -1,6 +1,6 @@
 .cardDetail{
     color: #4c4c59;
-    height: 300px;
+    min-height: 300px;
 }
 
 .cardDetail img{
@@ -13,8 +13,21 @@
     text-align: left;
 }
 
+.mana img{
+    width: 16px;
+}
+
+.mana{
+    display: inline-flex;
+    margin-left: 10px;
+}
+
+.header h5{
+    display: inline-block;
+}
+
 .cardDetail{
-    background-color: #f8f7f7;
+    background-color: var(--main-background);
     padding: 30px; 
     margin-top: 20px;
     text-align: left;
@@ -25,6 +38,12 @@
     float: left;
     z-index: 10;
 }  
+
+.cardImage{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+}
 
 .content-top{
     line-height: 5px;
@@ -37,7 +56,7 @@
 }
 
 .circle{
-    background-color: #0d6efd;
+    background-color: var(--main-color);
     border-radius: 50%;
     width: 30px !important;
     height: 30px;
@@ -51,3 +70,84 @@
 .content{
     padding-left: 20px;
 }
+
+.prints ul{
+    list-style: none;
+    margin-top: -20px;
+    margin-left: 0;
+    padding: 0;
+}  
+
+.prints ul li{
+    background-color: white;
+    border-bottom: #e4e3e3 1px solid;
+    border-left: #e4e3e3 1px solid;
+    border-right: #e4e3e3 1px solid;
+    font-size: 12px;
+    padding: 5px;
+} 
+
+.prints ul li:hover{
+    background-color: #e4e3e3;
+} 
+
+.prints ul li:first-of-type{
+    background-color: #e4e3e3;
+    border-right: 2px  var(--main-color) solid; 
+}
+
+.searchHeader{
+    background-color: var(--main-color);
+    color: white;
+    padding: 5px;
+    margin-top: -5px; 
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.searchHeader p {
+    padding: 0;
+    margin: 0;
+}
+
+.printImage{
+    display: none;
+    z-index: 1000;
+    position: absolute;
+}
+
+.prints ul li:hover .printImage{
+    display: block !important;  
+}
+
+.contentBlock{
+    background-color: white;
+    padding: 5px;
+    margin-top: -20px;
+}
+
+.contentBlock p{
+    margin: 0;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.printButton{
+    background: none;
+    color: var(--main-color);
+    padding: 5px !important;
+    margin-top: -8px;
+    border-radius: 5px ;
+    float: right !important;
+    font-size: 16px;
+    border: none;
+    font-weight: bold;
+}
+
+.printSymbol{
+    margin-top: 7px !important;
+}
+
+.oracleText p {
+    font-size: 14px !important;
+} 

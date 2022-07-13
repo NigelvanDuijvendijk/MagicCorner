@@ -17,15 +17,6 @@
     margin-top: 7px;
   }
 
-  .filters{
-    height: 10vh;
-  }
-
-  .filters h5, .collection h5{
-    text-align: left;
-    padding-top: 10px;
-  }
-
   .collection{
     border-top: 1px solid #4c4c59;
     height: 90vh;
@@ -39,4 +30,10 @@
     transform: scale(2, 2) !important;
     z-index: 10;
     transition: 0.5s;
+  }
+
+  .nameLabel{
+    background-color: var(--main-background);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   }

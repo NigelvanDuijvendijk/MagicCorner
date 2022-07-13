@@ -1,12 +1,23 @@
+:root{
+  --main-color: #A63D40;
+  --main-background: #f8f7f7;
+}
+
 .App {
   text-align: center;
   padding: 0;
+  font-family: 'Roboto', sans-serif !important;
 }
+.btn-primary{
+  background-color:  var(--main-color) !important;
+  border-color:  var(--main-color) !important;
+}
+
 body {
-  background-color: white !important;
+  background-color: white !important; 
   min-height: 100vh;
 } 
-nav{
+nav{ 
   width: 100%;
   padding: 10px 50px !important;
 }
@@ -32,4 +43,13 @@ nav{
 
 .pointer{
   cursor: pointer;
+}
+
+.filters{
+  height: 10vh;
+}
+
+.filters h5, .collection h5{
+  text-align: left;
+  padding-top: 10px;
 }

@@ -4,13 +4,12 @@ import CardDetail from "../../Components/CardDetail/CardDetail";
 import CardModel from "../../Models/CardModel";
 import CardService from "../../Services/CardService";
 
-function SearchPage() {
+function CardDetailPage() {
     const { search } = useParams();
     const [foundCard, setFoundCard] = useState([] as CardModel[]);
     const cardService = new CardService();
 
     useEffect(() => {
-        setFoundCard([]);
         if(search != null) {
             getCard(search);
         }
@@ -50,4 +49,4 @@ function SearchPage() {
     );
 }
 
-export default SearchPage;
+export default CardDetailPage;
