@@ -13,6 +13,7 @@ import { PieChart } from "react-minimal-pie-chart";
 import Filter from "../../Components/Filter/Filter";
 import { faCoffee, faShare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Card, Cards } from "scryfall-sdk";
 
 function DecksPage() {
     const [user] = useAuthState(auth);
@@ -24,7 +25,7 @@ function DecksPage() {
     const [pieManaChart, setManaPieChart] = useState([] as any[]);
     const [search, setSearch] = useState('');
     const [shareUrl, setShareUrl] = useState('');
-    const [foundCard, setFoundCard] = useState([] as CardModel[]);
+    const [foundCard, setFoundCard] = useState([] as Card[]);
     const cardService = new CardService();
     const navigate = useNavigate();
     const [filteredCollection, setFilteredCollection] = useState([] as DocumentData[]);
@@ -47,24 +48,12 @@ function DecksPage() {
         }
     } 
 
-    const getCard = (search: string) => {
-        setFoundCard([]);
-        cardService.searchCard(search).then((foundCards) => {
-            foundCards.data.forEach((card: any) => {
-                var newCard: CardModel = CardModel.fromJSON(card);
-                newCard.prints = [];
-                cardService.searchPrints(card.name).then((foundPrints) => {
-                    foundPrints.data.forEach((print: CardModel) => {
-                        const newPrint: CardModel = print;
-                            newCard.prints.push(newPrint);
-                    });
-                });
-                setFoundCard(foundCard => [...foundCard, newCard]); 
-            });
-        }).catch((error) => { 
-            console.log(error);
-        });
-    }   
+    const getCard = async (search: string) => {
+        Cards.search(search) 
+        .on("data", card => {
+            setFoundCard(foundCard => [...foundCard, card]); 
+        })
+    } 
 
     const getCardsCollection = async () => {
         await getCardCollection(user).then((res) => {

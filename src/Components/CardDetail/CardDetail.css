@@ -27,7 +27,7 @@
 }
 
 .cardDetail{
-    background-color: var(--main-background);
+    background-color: white;
     padding: 30px; 
     margin-top: 20px;
     text-align: left;

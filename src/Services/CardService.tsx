@@ -3,21 +3,13 @@ import { DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
 import CardFromFirebaseModel from "../Models/CardFromFirebaseModel";
 import CardModel from "../Models/CardModel";
 import NetworkService from "./NetworkService";
+import Scry, { Cards } from"scryfall-sdk";
+import MagicEmitter from "scryfall-sdk/out/util/MagicEmitter";
 
 class CardService {
 
     networkService: NetworkService = new NetworkService();
-
-    async searchCard(search: string){
-        const url = `https://api.scryfall.com/cards/search?q=${search}`;
-        return this.networkService.get(url);
-    }
-
-    async searchPrints(search: string){
-        const url = `https://api.scryfall.com/cards/search?q=${search}&unique=prints`;
-        return this.networkService.get(url);
-    }
-
+    
     CardtoCardCardFromFirebaseModel(card: CardModel){
         console.log(card);
         return {

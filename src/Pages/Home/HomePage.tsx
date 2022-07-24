@@ -1,20 +1,20 @@
 import { useState } from "react";
+import { Card, Cards } from "scryfall-sdk";
 import CardDetail from "../../Components/CardDetail/CardDetail";
 import CardModel from "../../Models/CardModel";
 import CardService from "../../Services/CardService";
 
 function HomePage() {
     const [search, setSearch] = useState('');
-    const [foundCard, setFoundCard] = useState({} as CardModel);
+    const [foundCard, setFoundCard] = useState({} as Card);
     const cardService = new CardService();
     
     const getCard = () => { 
-        cardService.searchCard(search).then((newCard) => {
-        const card: CardModel = CardModel.fromJSON(newCard.data[0]);
-        setFoundCard(card); 
-        }).catch((error) => {
-        console.log(error);
-        });
+        Cards.search(search) 
+        .on("data", card => {
+            setFoundCard(card); 
+        })
+        //add getting prints
     }
 
     return (

@@ -13,19 +13,27 @@ import { auth, logout } from './Services/FirebaseService';
 import DecksPage from './Pages/Decks/DecksPage';
 import DeckDetailsPage from './Pages/DeckDetails/DeckDetailsPage';
 import CardDetailPage from './Pages/CardDetail/CardDetailPage';
+import InvestedPage from './Pages/Invested/InvestedPage';
+import ScannerPage from './Pages/Scanner/ScannerPage';
+import { Card, Cards } from "scryfall-sdk";
 
 function App() {
   let navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [user, loading, error] = useAuthState(auth);
+  const [automcomplete, setAutocomplete] = useState([] as string[]);
 
   const searchCard = () => {
     navigate("/search/" + search);
   }
 
+  const autoComplete = async(search: string) => {
+    setAutocomplete(await Cards.autoCompleteName(search));
+  }
+
   return (
     <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">Card Corner</a>
           <button
@@ -57,10 +65,27 @@ function App() {
                 <a className="nav-link active" aria-current="page" href="/decks">Decks</a>
               </li>
               }
+              {user &&
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/invested">Invested</a>
+              </li> 
+              }
+              {user &&
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/scanner">Scanner</a>
+              </li> 
+              }
             </ul>
             <div className="input-group ps-5">
               <div id="navbar-search-autocomplete" className="form-outline">
-                <input onChange={event => setSearch(event.target.value)} type="search" id="form1" className="form-control" />
+                <input onChange={event => {setSearch(event.target.value); autoComplete(event.target.value)}} type="search" id="form1" className="form-control" />
+                { autoComplete.length > 0 &&
+                    <ul>
+                      {automcomplete.map(name => {
+                        return <li onClick={() => {setSearch(name);}}>{name}</li>
+                      })}
+                    </ul>
+                }
               </div>
               <button onClick={searchCard} type="button" className="btn btn-primary">
                 search
@@ -96,10 +121,13 @@ function App() {
               <Route path="/reset" element={<ResetPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/decks" element={<DecksPage />} />
+              <Route path="/invested" element={<InvestedPage />} />
               <Route path="/deckDetails/:deckName" element={<DeckDetailsPage />} />
               <Route path="/sharedDeck/:uuid" element={<DeckDetailsPage />} />
               <Route path="/search/:search" element={<SearchPage />} />
               <Route path="/details/:search" element={<CardDetailPage />} />
+              <Route path="/scanner" element={<ScannerPage />} />
+
             </Routes>
         </main>
     </div>

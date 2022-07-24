@@ -8,7 +8,10 @@ import DeckModel from "../Models/DeckModel";
 import CardFromFirebaseModel from "../Models/CardFromFirebaseModel";
 import CardService from "./CardService";
 import { v4 as uuidv4 } from 'uuid';
- 
+import InvestmentService from "./InvestmentService";
+import InvestmentModel from "../Models/InvestmentModel";
+import Scry, { Cards, Card } from"scryfall-sdk";
+
 const firebaseConfig = {
     apiKey: "AIzaSyAzb25HokiX-JU_K9I_zzoHXUrO6y2niZs",
     authDomain: "magic-app-34e1f.firebaseapp.com",
@@ -23,7 +26,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 const cardService: CardService = new CardService()
-
+const investmentService: InvestmentService = new InvestmentService();
 const signInWithGoogle = async () => {
     try {
         const res = await signInWithPopup(auth, googleProvider);
@@ -82,16 +85,16 @@ const addUserToFirestore = async (user: any) => {
     });
 }
 
-const addCardToCollection = async (card: CardModel, user: any) => {
+const addCardToCollection = async (card: Card, user: any) => {
     const userCollection = collection(db, 'users/' + user.uid + '/cards');
 
-    await addDoc(userCollection, cardService.CardtoCardCardFromFirebaseModel(card));
+    // await addDoc(userCollection, cardService.CardtoCardCardFromFirebaseModel(card));
 }
 
-const addCardToDeck = async (card: CardModel, user: any, deck: string) => {
+const addCardToDeck = async (card: Card, user: any, deck: string) => {
     const deckCollection = collection(db, 'users/' + user.uid + '/decks/' + deck + "/cards");
 
-    await addDoc(deckCollection, cardService.CardtoCardCardFromFirebaseModel(card));
+    // await addDoc(deckCollection, cardService.CardtoCardCardFromFirebaseModel(card));
 }
 
 const getCardCollection = async (user: any) => {
@@ -180,6 +183,28 @@ const getShareUrl  = async (deckName: string, user: any) => {
     });
 }
 
+const addInvestment = async (investment: String, investmentType: String, price: String, user: any) => {
+    // TODO: Add investments collection to firestore automatically
+    const docRef = doc(db, "users", user.uid + '/investments/' + uuidv4());
+    await setDoc(docRef, {
+        investment: investment,
+        investmentType: investmentType,
+        price: price
+    });
+}
+
+const getInvestments = async (user: any) => {
+    const snapshot = await getDocs(collection(db, 'users/' + user.uid+ '/investments/'));
+    const investments: InvestmentModel[] = [];
+    snapshot.forEach((doc) => {
+        investments.push(investmentService.DocumentToInvestment(doc));
+    });
+
+    return investments;
+}
+ 
+
+
 export {
     auth,
     db,
@@ -196,6 +221,8 @@ export {
     getDeck,
     addCardToDeck,
     getSharedDeck,
-    getShareUrl
+    getShareUrl,
+    addInvestment,
+    getInvestments
 };
 

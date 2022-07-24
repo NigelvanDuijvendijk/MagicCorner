@@ -41,9 +41,6 @@ function DecksPage() {
         <div className="DecksPage">
             <main>
                 <div className="container">
-                    <div className="filters">
-                        <h5>Filters</h5>
-                    </div>
                     <div className="decks">
                         <div className="row">
                             <div className="col-12">
