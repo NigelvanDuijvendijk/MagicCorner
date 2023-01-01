@@ -1,0 +1,25 @@
+.dragAndDrop{
+    border: dashed black 2px;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 50px;
+    height: auto;
+    background-color: white;
+    padding: 50px;
+}
+
+.dragAndDrop:hover{
+    border: dashed rgb(182, 175, 175) 2px;
+    background-color: rgb(250, 223, 223);
+    transition: 0.5s;
+}
+
+.dragAndDrop h4{
+    padding-top: 50px;
+}
+
+svg {
+    padding: 50px;
+    font-size: 100px;
+    color: var(--main-color);
+}
