@@ -14,6 +14,11 @@
   border-color:  var(--main-color) !important;
 }
 
+.fa-bars{
+  height: 30px;
+  padding: 0;
+}
+
 body {
   background-color: var(--main-background) !important; 
   min-height: 100vh;
@@ -54,4 +59,27 @@ nav{
 .filters h5, .collection h5{
   text-align: left;
   padding-top: 10px;
+}
+
+@media only screen and (max-width: 910px) {
+  .navbar{
+    text-align: left;
+  }
+
+  .navbar-nav{
+    margin-top: 50px;
+  }
+
+  #navbar-search-autocomplete{
+    display: none;
+  }
+
+  .searchButton{
+    display: none !important;
+  }
+
+  .navbar-brand{
+    top: 0;
+    position: absolute;
+  }
 }
